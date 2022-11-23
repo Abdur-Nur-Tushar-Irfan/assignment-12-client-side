@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FcLock,FcUnlock } from "react-icons/fc";
+import { FcLock, FcUnlock } from "react-icons/fc";
+import { AuthContext } from '../Context/UserContext';
+import toast from 'react-hot-toast';
 
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleSignOut = () => {
+        logOut()
+            .then(result => {
+                toast.success('successfully log out')
+            })
+            .catch(error => console.error(error))
+    }
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -14,8 +24,16 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/home'>Home</Link></li>
                         <li><Link to='/about'>About</Link></li>
-                        <li><Link to='/Login'><FcUnlock></FcUnlock>Login</Link></li>
-                        <li><Link><FcLock></FcLock>Logout</Link></li>
+                        {
+                            user?.displayName ?
+                                <>
+                                    <li><button onClick={handleSignOut}><FcLock></FcLock>Logout</button> <p>{user?.displayName}</p></li>
+                                    
+                                </>
+                                :
+                                <li><Link to='/Login'><FcUnlock></FcUnlock>Login</Link></li>
+
+                        }
                     </ul>
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl">daisyUI</Link>
@@ -24,8 +42,20 @@ const Header = () => {
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/home'>Home</Link></li>
                     <li><Link to='/about'>About</Link></li>
-                    <li><Link to='/Login'><FcUnlock></FcUnlock>Login</Link></li>
-                    <li><Link><FcLock></FcLock>Logout</Link></li>
+                    {
+                        user?.displayName ?
+                            <>
+                                <li><button onClick={handleSignOut}><FcLock></FcLock>Logout</button>  <p>{user?.displayName}</p></li>
+                               
+                            </>
+                            :
+
+                            <li><Link to='/Login'><FcUnlock></FcUnlock>Login</Link></li>
+
+
+
+
+                    }
                 </ul>
             </div>
 
