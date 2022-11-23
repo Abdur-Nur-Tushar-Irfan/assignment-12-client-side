@@ -1,16 +1,54 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import login1 from '../../assets/images/login1.webp'
 import login2 from '../../assets/images/login2.jpg'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Context/UserContext';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { createUser, updateUserProfile } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location=useLocation();
+    const from = location.state?.from?.pathname || '/'
+
+    const handleRegister = (data) => {
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                toast.success('successfully register')
+                handleUpdateUserProfile(data.name, data.photoURL)
+                navigate('/')
+
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
+    }
+    const handleUpdateUserProfile = (name, email) => {
+        const profile = {
+            displayName: name,
+            email
+        }
+        updateUserProfile(profile)
+            .then(() => {
+
+            })
+            .catch(error => {
+                console.error(error)
+            }) 
+
+    }
+    
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <img alt='' className='lg:w-1/2' src={login1} />
-                <form onSubmit={handleSubmit()} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <form onSubmit={handleSubmit(handleRegister)} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
                         <img className=' h-15 w-1/2 rounded-full mx-auto' src={login2} alt='' />
                         <div className="form-control">
