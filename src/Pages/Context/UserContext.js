@@ -16,7 +16,6 @@ const UserContext = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             setLoading(false)
-
         })
         return () => {
             unsubscribe();
@@ -25,14 +24,12 @@ const UserContext = ({ children }) => {
 
     const createUser = (email, password) => {
         setLoading(true)
-
         return createUserWithEmailAndPassword(auth, email, password)
     }
     //for login
 
     const signIn = (email, password) => {
         setLoading(true)
-
         return signInWithEmailAndPassword(auth, email, password)
     }
     //for signOut
@@ -42,14 +39,12 @@ const UserContext = ({ children }) => {
     //for update user
     const updateUserProfile = (profile) => {
         return updateProfile(auth.currentUser, profile)
-
     }
     //sign in with google
     const signInWithGoogle = () => {
         setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
-
     const authInfo = {
         user,
         createUser,
