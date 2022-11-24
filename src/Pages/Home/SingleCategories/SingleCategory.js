@@ -6,8 +6,8 @@ const SingleCategory = ({ allCategory }) => {
     console.log(allCategory)
     const {category,name,picture,resalePrice,registered,orginialPrice,_id }=allCategory;
     return (
-        <div className="card  shadow-xl">
-            <figure><img className='border' src={picture} alt="Shoes" /></figure>
+        <div className="card  shadow-xl border">
+            <figure><img  src={picture} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
                     {category}

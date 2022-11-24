@@ -6,11 +6,11 @@ const AllCategory = ({ category }) => {
 
     return (
         <div>
-            <div className="card card-compact gap-2 shadow-xl">
+            <div className="card card-compact gap-6 shadow-xl border mb-5">
                 <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <div className="card-actions ">
-                        <Link to={`singlecategory/${id}`}className="btn btn-primary w-full">{name}</Link>
+                        <Link to={`singlecategory/${id}`}className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full">{name}</Link>
                     </div>
                 </div>
             </div>
