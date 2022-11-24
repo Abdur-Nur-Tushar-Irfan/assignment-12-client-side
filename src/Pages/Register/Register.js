@@ -6,14 +6,17 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/UserContext';
 import toast from 'react-hot-toast';
 
+
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext)
+    const [registerError,setRegisterError]=useState('')
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
     const handleRegister = (data) => {
+        
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user
@@ -25,6 +28,7 @@ const Register = () => {
             })
             .catch(error => {
                 console.error(error)
+                setRegisterError(error.message)
             })
 
     }
@@ -39,11 +43,10 @@ const Register = () => {
             })
             .catch(error => {
                 console.error(error)
+
             })
 
     }
-
-
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
@@ -78,6 +81,7 @@ const Register = () => {
                                 <option>Seller</option>
                             </select>
                             {errors.password?.type === 'required' && <p className='text-red-600 mt-2'>Password is required</p>}
+                            <p className='text-red-600'>{registerError}</p>
                             <label className="label">
                                 <p>Already Login? <Link to='/login' className='text-cyan-700 font-bold'>Log in</Link></p>
                             </label>
