@@ -23,7 +23,7 @@ const SingleCategory = ({ allCategory,setSelectCategory }) => {
                 <p>Registered: {registered}</p>
                 <p>Location: {location} </p>
                 <div className="card-actions justify-center">
-                    <label onClick={()=>setSelectCategory(allCategory)} htmlFor="booking-modal" className="btn btn-accent w-full text-white">
+                    <label onClick={()=>setSelectCategory(allCategory)} htmlFor="booking-modal" className="btn bg-gradient-to-r from-cyan-500 to-blue-500 w-full text-white">
                         Book Now
                     </label>
                     <Link to={`/wishlist/${_id}`} className="badge badge-outline w-full"><FcLike></FcLike> Wishlist</Link>
