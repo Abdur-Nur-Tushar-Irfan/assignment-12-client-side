@@ -10,7 +10,7 @@ const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate();
-    const location=useLocation();
+    const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
     const handleRegister = (data) => {
@@ -39,10 +39,10 @@ const Register = () => {
             })
             .catch(error => {
                 console.error(error)
-            }) 
+            })
 
     }
-    
+
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -70,6 +70,13 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" {...register("password", { required: true, minLength: { value: 6, message: 'Password must be 6 character' } })} placeholder="password" className="input input-bordered" />
+                            <label className="label">
+
+                            </label>
+                            <select className="select select-bordered w-full max-w-xs">
+                                <option>Admin</option>
+                                <option>Seller</option>
+                            </select>
                             {errors.password?.type === 'required' && <p className='text-red-600 mt-2'>Password is required</p>}
                             <label className="label">
                                 <p>Already Login? <Link to='/login' className='text-cyan-700 font-bold'>Log in</Link></p>
