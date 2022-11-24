@@ -10,7 +10,7 @@ const AllCategory = ({ category }) => {
                 <figure><img src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <div className="card-actions ">
-                        <Link to={`singlecategory/${id}`}className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-full">{name}</Link>
+                        <Link to={`singlecategory/${id}`}className="btn bg-gradient-to-r from-cyan-500 to-blue-500 w-full">{name}</Link>
                     </div>
                 </div>
             </div>

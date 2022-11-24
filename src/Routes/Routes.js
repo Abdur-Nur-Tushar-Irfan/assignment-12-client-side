@@ -6,6 +6,10 @@ import SingleCategories from "../Pages/Home/SingleCategories/SingleCategories";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import WishList from "../Pages/WishList/WishList";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+
+
+
 
 
 
@@ -36,7 +40,7 @@ export const routes=createBrowserRouter([
             },
             {
                 path:'/singlecategory/:id',
-                element:<SingleCategories></SingleCategories>,
+                element:<PrivateRoute><SingleCategories></SingleCategories></PrivateRoute>,
                 loader:({params})=>fetch(`http://localhost:5000/allCategories/${params.id}`)
             },
             {

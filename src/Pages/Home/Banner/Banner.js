@@ -8,7 +8,7 @@ const Banner = () => {
                 <div className="max-w-md py-20">
                     <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
                     <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button className="btn bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Get Started</button>
+                    <button className="btn bg-gradient-to-r from-cyan-500 to-blue-500">Get Started</button>
                 </div>
             </div>
         </div>
