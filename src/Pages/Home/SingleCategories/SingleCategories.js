@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import BookNow from '../Home/BookNow/BookNow';
+import BookNow from '../BookNow/BookNow';
 import SingleCategory from './SingleCategory';
 
 const SingleCategories = () => {

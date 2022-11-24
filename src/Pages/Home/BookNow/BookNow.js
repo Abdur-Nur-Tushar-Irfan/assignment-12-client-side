@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../../Context/UserContext';
+import { AuthContext } from '../../Context/UserContext';
 
 const BookNow = ({selectCategory,setSelectCategory}) => {
     const {category,name,resalePrice,orginialPrice}=selectCategory

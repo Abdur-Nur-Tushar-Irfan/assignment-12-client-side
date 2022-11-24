@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FcLike } from "react-icons/fc";
-import BookNow from '../Home/BookNow/BookNow';
+import BookNow from '../BookNow/BookNow';
 import { useQuery } from '@tanstack/react-query';
 
 const SingleCategory = ({ allCategory,setSelectCategory }) => {
