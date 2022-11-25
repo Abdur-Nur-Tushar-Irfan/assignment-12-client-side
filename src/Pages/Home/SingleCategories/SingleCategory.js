@@ -12,7 +12,7 @@ const SingleCategory = ({ allCategory,setSelectCategory }) => {
     return (
         <div className="card  shadow-xl border">
             <figure><img src={picture} alt="Shoes" /></figure>
-            <div className="card-body">
+            <div className="card-body py-0">
                 <h2 className="card-title">
                     {category}
                     <div className="badge badge-secondary">Used</div>
