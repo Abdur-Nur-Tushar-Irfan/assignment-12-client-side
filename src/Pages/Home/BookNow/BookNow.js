@@ -42,6 +42,8 @@ const BookNow = ({selectCategory,setSelectCategory}) => {
             }
         })
 
+
+
     }
     return (
         <>
@@ -57,9 +59,9 @@ const BookNow = ({selectCategory,setSelectCategory}) => {
                         <input type="text" name='category' value={category}  placeholder='your email' className="input input-bordered w-full mb-2" />
                         <input type="text" name='resalePrice' value={resalePrice} placeholder='Your Number' className="input input-bordered w-full mb-2" />
                         <input type="text" name='orginialPrice' value={orginialPrice} placeholder='Your Number' className="input input-bordered w-full mb-2" />
-                        <input type="text" name='location'  placeholder='Your Location' className="input input-bordered w-full mb-2" />
+                        <input type="text" name='location'  placeholder='Your Location' className="input input-bordered w-full mb-2" required />
                         <input type="phone" name='phone'  placeholder='Your Number' className="input input-bordered w-full mb-2" />
-                        <input type="submit" value='Submit' placeholder="Type here" className="input bg-accent input-bordered w-full font-bold " />
+                        <input type="submit" value='Submit' placeholder="Type here" className="input bg-accent input-bordered w-full font-bold " required />
 
                     </form>
                 </div>

@@ -10,18 +10,19 @@ import toast from 'react-hot-toast';
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext)
-    const [registerError,setRegisterError]=useState('')
+    const [registerError, setRegisterError] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
     const handleRegister = (data) => {
-        
+
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user
                 console.log(user)
                 toast.success('successfully register')
+                saveUser(data.name,data.email,data.role)
                 handleUpdateUserProfile(data.name, data.photoURL)
                 navigate('/')
 
@@ -46,6 +47,23 @@ const Register = () => {
 
             })
 
+    }
+    const saveUser = (name, email,role) => {
+        const user = { name, email, role }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+
+            })
+            .catch(error => console.error(error))
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -76,8 +94,9 @@ const Register = () => {
                             <label className="label">
 
                             </label>
-                            <select className="select select-bordered w-full max-w-xs">
-                                <option>Admin</option>
+                            <select {...register("role", { required: true })} placeholder="role" className="select select-bordered w-full max-w-xs ">
+                                <option>user</option>
+                                <option>admin</option>
                                 <option>Seller</option>
                             </select>
                             {errors.password?.type === 'required' && <p className='text-red-600 mt-2'>Password is required</p>}
