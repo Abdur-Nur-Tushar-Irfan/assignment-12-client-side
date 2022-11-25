@@ -24,13 +24,13 @@ const Categories = () => {
     ]
     return (
         <div>
-            <h1 className='text-center text-3xl mb-8 mt-8 font-bold'>Explore All Of Our <br></br> Categories</h1>
+            <h1 className='text-center text-3xl mb-8 mt-8 font-bold'>PRODUCTS BY CATEGORY</h1>
+            <hr ></hr>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 m-20'>
                 { 
                     categories?.map(category => <AllCategory
                         key={category.id}
                         category={category}
-
                     >
                     </AllCategory>)
                 }
