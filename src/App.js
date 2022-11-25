@@ -4,13 +4,11 @@ import { routes } from './Routes/Routes';
 
 function App() {
   return (
-    <div className='max-w-[1000px] mx-auto'>
+    <div className=' mx-auto'>
       <RouterProvider
         const router={routes}
 
       >
-
-
       </RouterProvider>
     </div>
   );

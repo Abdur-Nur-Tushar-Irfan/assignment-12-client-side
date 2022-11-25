@@ -1,6 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Main/Main";
 import About from "../Pages/About/About";
+import Blog from "../Pages/Blog/Blog";
+import AddProduct from "../Pages/DashBoard/AddProduct/AddProduct";
+import Allseller from "../Pages/DashBoard/Allseller/Allseller";
+import Order from "../Pages/DashBoard/Order/Order";
+import DashboardLayout from "../Pages/DashboardLayout/DashboardLayout";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
 import SingleCategories from "../Pages/Home/SingleCategories/SingleCategories";
@@ -8,11 +13,6 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import WishList from "../Pages/WishList/WishList";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-
-
-
-
-
 
 export const routes=createBrowserRouter([
     {
@@ -46,10 +46,39 @@ export const routes=createBrowserRouter([
                 loader:({params})=>fetch(`http://localhost:5000/allCategories/${params.id}`)
             },
             {
+                path:'/blog',
+                element:<Blog></Blog>
+
+            },
+          
+            {
                 path:'/wishlist/:id',
                 element:<WishList></WishList>
             }
         ]
+    },
+    {
+        path:'/dashboard',
+        element:<DashboardLayout></DashboardLayout>,
+        children:[
+            {
+                path:'/dashboard/order',
+                element:<Order></Order>
+            },
+            {
+                path:'/dashboard/product',
+                element:<AddProduct></AddProduct>
+            },
+          
+            {
+                path:'/dashboard/seller',
+                element:<Allseller></Allseller>
+            }
+          
+          
+
+        ]
     }
+
 
 ])
