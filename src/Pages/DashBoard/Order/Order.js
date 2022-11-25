@@ -6,7 +6,11 @@ const Order = () => {
      const { user } = useContext(AuthContext)
    const {data:bookings=[]}=useQuery({
     queryKey:['bookings'],
-    queryFn:()=>fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+    queryFn:()=>fetch(`http://localhost:5000/bookings?email=${user?.email}`,{
+        headers:{
+            authorization:`bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
     .then(res=>res.json())
    })
     return (
@@ -24,8 +28,8 @@ const Order = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        bookings.map(booking=><tr>
+                    {   bookings.length>0 &&
+                        bookings?.map(booking=><tr>
                             <td>
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">

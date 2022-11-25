@@ -5,15 +5,22 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/UserContext';
 import toast from 'react-hot-toast';
+import useToken from '../../hooks/useToken';
 
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext)
+    const [createdUserEmail,setCreatedUserEmail]=useState('')
+    const [token]=useToken(createdUserEmail)
     const [registerError, setRegisterError] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
+
+    if(token){
+        navigate('/')
+    }
 
     const handleRegister = (data) => {
 
@@ -24,7 +31,6 @@ const Register = () => {
                 toast.success('successfully register')
                 saveUser(data.name,data.email,data.role)
                 handleUpdateUserProfile(data.name, data.photoURL)
-                navigate('/')
 
             })
             .catch(error => {
@@ -60,11 +66,13 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                setCreatedUserEmail(email)
 
             })
             .catch(error => console.error(error))
     }
+
+    
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
