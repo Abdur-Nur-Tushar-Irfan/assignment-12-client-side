@@ -105,7 +105,7 @@ const Register = () => {
                             <select {...register("role", { required: true })} placeholder="role" className="select select-bordered w-full max-w-xs ">
                                 <option>user</option>
                                 <option>admin</option>
-                                <option>Seller</option>
+                                <option>seller</option>
                             </select>
                             {errors.password?.type === 'required' && <p className='text-red-600 mt-2'>Password is required</p>}
                             <p className='text-red-600'>{registerError}</p>

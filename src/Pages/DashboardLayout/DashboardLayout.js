@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import useAdmin from '../../hooks/useAdmin';
+import { AuthContext } from '../Context/UserContext';
 import Header from '../Header/Header';
 
+
 const DashboardLayout = () => {
+    const { user } = useContext(AuthContext);
+    const [role, setRole] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/users?email=${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => setRole(data));
+    }, [user?.email]);
+
+    const [isAdmin] = useAdmin(user?.email);
     return (
         <div>
             <Header></Header>
@@ -14,10 +26,35 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-                        <li><Link to='/dashboard/order'>My Order</Link></li>
-                        <li><Link to='/dashboard/product'>Add A product</Link></li>
-                        <li><Link to='/dashboard/seller'>All Seller</Link></li>
-                       
+                        {!isAdmin &&
+                            role?.map((r) =>
+                                r.role === "seller" ? (
+                                    <>
+                                        <li>
+                                            <Link to="/dashboard/addProduct">Add A product</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="dashboard/addProduct">My product</Link>
+                                        </li>
+                                    </>
+                                ) : (
+                                    <>
+                                        <li>
+                                            <Link to="/dashboard">My Orders</Link>
+                                        </li>
+                                    </>
+                                )
+                            )}
+                        {isAdmin && (
+                            <>
+                                <li to=''>
+                                    <Link to='/dashboard/buyer'>All Buyer</Link>
+                                </li>
+                                <li>
+                                    <Link to='/dashboard/seller'>All Seller</Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
 
                 </div>
