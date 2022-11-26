@@ -86,7 +86,7 @@ export const routes=createBrowserRouter([
                 element:<AddProduct></AddProduct>
             },
             {
-                path:"dashboard/addProduct",
+                path:"/dashboard/myProduct",
                 element:<MyProduct></MyProduct>
             },
           

@@ -1,15 +1,57 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
+    const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const imageHostKey = process.env.REACT_APP_Image_apiKey//imagebb key
     const handleAddProduct = (data) => {
-        console.log(data)
-       
-        
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    console.log(imgData.data.url)
+                    const products = {
+                        name: data.name,
+                        price: data.price,
+                        number: data.number,
+                        location: data.location,
+                        category: data.category,
+                        description: data.description,
+                        year: data.year,
+                        image: imgData.data.url
+                    }
+                    fetch('http://localhost:5000/products',{
+                        method:'POST',
+                        headers:{
+                            'content-type':'application/json'
+                        },
+                        body:JSON.stringify(products)
+                        
+                    })
+                   .then(res=>res.json())
+                   .then(result=>{
+                    toast.success('Products added succesfull')
+                    navigate('/dashboard/myProduct')
+                   })
+
+
+
+
+                }
+            })
+
 
     }
-
     return (
         <form onSubmit={handleSubmit(handleAddProduct)} className="card w-full shadow-2xl bg-base-100">
             <div className="card-body">
