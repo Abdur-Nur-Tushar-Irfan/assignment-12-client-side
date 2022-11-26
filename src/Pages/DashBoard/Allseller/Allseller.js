@@ -6,7 +6,7 @@ import { AuthContext } from '../../Context/UserContext';
 const Allseller = () => {
     const {user}=useContext(AuthContext)
     const url=`http://localhost:5000/seller?role=seller`
-    const {data:users=[]}=useQuery({
+    const {data:users=[],refetch}=useQuery({
        queryKey:['users',user?.email],
        queryFn:async()=>{
           const res=await fetch(url);
@@ -14,6 +14,23 @@ const Allseller = () => {
           return data;
        }
     })
+    const handleSellerDelete = (id) => {
+        const agree = window.confirm('are your sure you delete your seller')
+        if (agree) {
+            fetch(`http://localhost:5000/seller/${id}`, {
+                method: 'DELETE',
+               
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('delete successfully')
+                        refetch()
+                    }
+                })
+        }
+
+    }
 
     return (
         <div className="overflow-x-auto">
@@ -33,11 +50,9 @@ const Allseller = () => {
                             <th>{i+1}</th>
                             <td>{usr?.name}</td>
                             <td>{usr?.email}</td>
-                            <td><button><div className="badge badge-secondary">Delete</div></button></td>
+                            <td><button onClick={()=>handleSellerDelete(usr._id)}><div className="badge badge-secondary">Delete</div></button></td>
                         </tr>)
                     }
-                   
-                 
                 </tbody>
             </table>
         </div>
