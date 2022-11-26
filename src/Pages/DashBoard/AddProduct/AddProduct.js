@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/UserContext';
 
 const AddProduct = () => {
     const navigate = useNavigate()
+    const {user}=useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHostKey = process.env.REACT_APP_Image_apiKey//imagebb key
     const handleAddProduct = (data) => {
@@ -21,6 +23,7 @@ const AddProduct = () => {
                 if (imgData.success) {
                     console.log(imgData.data.url)
                     const products = {
+                        email:data.email,
                         name: data.name,
                         price: data.price,
                         number: data.number,
@@ -44,9 +47,6 @@ const AddProduct = () => {
                     navigate('/dashboard/myProduct')
                    })
 
-
-
-
                 }
             })
 
@@ -56,7 +56,11 @@ const AddProduct = () => {
         <form onSubmit={handleSubmit(handleAddProduct)} className="card w-full shadow-2xl bg-base-100">
             <div className="card-body">
                 <div className="form-control">
-                    <input type="name" {...register("name", { required: true })} placeholder="Name" className="input input-bordered" />
+                    <input defaultValue={user?.displayName} type="name" {...register("name", { required: true })} placeholder="Name" className="input input-bordered" />
+                    {errors.email?.type === 'required' && <p className='text-red-600 mt-2'>Email is required</p>}
+                </div>
+                <div className="form-control">
+                    <input value={user?.email} type="email" {...register("email", { required: true })} placeholder="Your Email" className="input input-bordered" />
                     {errors.email?.type === 'required' && <p className='text-red-600 mt-2'>Email is required</p>}
                 </div>
                 <div className="form-control">

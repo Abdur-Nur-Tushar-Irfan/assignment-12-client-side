@@ -18,13 +18,13 @@ const Dashboard = () => {
     <div>
       {isAdmin ? (
         <>
-          <p>This is admin</p>
+          <p className="text-3xl font-bold">For Admin</p>
         </>
       ) : (
         <>
           {role.map((r) =>
             r.role === "seller" ? (
-              <>This is seller</>
+              <p className="text-3xl font-bold">For All Seller</p>
             ) : (
               <>
                 <Order></Order>
