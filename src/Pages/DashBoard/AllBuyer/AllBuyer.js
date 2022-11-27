@@ -51,9 +51,6 @@ const AllBuyer = () => {
                         </tr>)
                     }
 
-
-
-
                 </tbody>
             </table>
         </div>

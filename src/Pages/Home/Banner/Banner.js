@@ -7,11 +7,12 @@ const Banner = () => {
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md py-20">
                     <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                    <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p className="mb-5">Shop online for wholesale second hand laptop? Global Sources has a full-scale list of wholesale second hand laptop products at factory prices featured by verified</p>
                     <button className="btn bg-gradient-to-r from-cyan-500 to-blue-500">Get Started</button>
                 </div>
             </div>
         </div>
+       
     );
 };
 

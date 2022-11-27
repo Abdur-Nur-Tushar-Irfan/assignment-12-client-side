@@ -8,6 +8,7 @@ import Allseller from "../Pages/DashBoard/Allseller/Allseller";
 import Dashboard from "../Pages/DashBoard/Dashboard/Dashboard";
 import MyProduct from "../Pages/DashBoard/MyProduct/MyProduct";
 import Order from "../Pages/DashBoard/Order/Order";
+import ReportedItem from "../Pages/DashBoard/ReportedItem/ReportedItem";
 import DashboardLayout from "../Pages/DashboardLayout/DashboardLayout";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
@@ -53,11 +54,6 @@ export const routes=createBrowserRouter([
                 element:<Blog></Blog>
 
             },
-          
-            {
-                path:'/wishlist/:id',
-                element:<WishList></WishList>
-            }
         ]
     },
     {
@@ -88,6 +84,10 @@ export const routes=createBrowserRouter([
             {
                 path:"/dashboard/myProduct",
                 element:<MyProduct></MyProduct>
+            },
+            {
+                path:"/dashboard/report",
+                element:<ReportedItem></ReportedItem>
             },
           
           

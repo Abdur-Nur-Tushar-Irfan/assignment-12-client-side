@@ -7,7 +7,6 @@ import { AuthContext } from '../Context/UserContext';
 import toast from 'react-hot-toast';
 import useToken from '../../hooks/useToken';
 
-
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext)
@@ -71,8 +70,6 @@ const Register = () => {
             })
             .catch(error => console.error(error))
     }
-
-    
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
@@ -104,7 +101,6 @@ const Register = () => {
                             </label>
                             <select {...register("role", { required: true })} placeholder="role" className="select select-bordered w-full max-w-xs ">
                                 <option>user</option>
-                                <option>admin</option>
                                 <option>seller</option>
                             </select>
                             {errors.password?.type === 'required' && <p className='text-red-600 mt-2'>Password is required</p>}

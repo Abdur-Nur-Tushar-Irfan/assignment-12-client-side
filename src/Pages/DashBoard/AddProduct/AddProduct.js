@@ -36,7 +36,8 @@ const AddProduct = () => {
                     fetch('http://localhost:5000/products',{
                         method:'POST',
                         headers:{
-                            'content-type':'application/json'
+                            'content-type':'application/json',
+                            
                         },
                         body:JSON.stringify(products)
                         
@@ -49,8 +50,6 @@ const AddProduct = () => {
 
                 }
             })
-
-
     }
     return (
         <form onSubmit={handleSubmit(handleAddProduct)} className="card w-full shadow-2xl bg-base-100">

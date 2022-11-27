@@ -7,12 +7,11 @@ import { useQuery } from '@tanstack/react-query';
 const SingleCategory = ({ allCategory,setSelectCategory }) => {
     console.log(allCategory)
     const { category, name, picture, resalePrice, registered, orginialPrice, _id, location } = allCategory;
-   
     
     return (
-        <div className="card  shadow-xl border">
+        <div className="card  shadow-xl border p-2 text">
             <figure><img src={picture} alt="Shoes" /></figure>
-            <div className="card-body py-0">
+            <div className="card-body py-0 pt-2">
                 <h2 className="card-title">
                     {category}
                     <div className="badge badge-secondary">Used</div>
@@ -26,7 +25,11 @@ const SingleCategory = ({ allCategory,setSelectCategory }) => {
                     <label onClick={()=>setSelectCategory(allCategory)} htmlFor="booking-modal" className="btn bg-gradient-to-r from-cyan-500 to-blue-500 w-full text-white">
                         Book Now
                     </label>
-                    <Link to={`/wishlist/${_id}`} className="badge badge-outline w-full"><FcLike></FcLike> Wishlist</Link>
+                   
+                    <label className="btn bg-gradient-to-r from-cyan-500 to-blue-500 w-full text-white">
+                        Reported
+                    </label>
+                   
                 </div>
             </div>
            
