@@ -1,15 +1,22 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Website[Click here](https://assignment-12-6f42d.web.app/).
 
-## Available Scripts
+## Technology used:
 
-In the project directory, you can run:
+- React.JS
+- Tailwind,DaisyUI  
+- firebase authentication
+- React router
+- Express.JS
+- MongoDb
 
-### `npm start`
+### Features:
+- Explore 3 Catogories of Laptop in this project.Each categories has used laptop item.
+- Buyer can buy products and seller also sell their products.
+- Buyer can buy any product and also report any product .
+- Admin can see all buyer all seller all reported item.Admin can control all the things of this projects.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
