@@ -8,7 +8,7 @@ const GetUpdates = () => {
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Get Our Updates</h1>
                     <p className="mb-5">Find out about events and other news</p>
-                   
+
                 </div>
             </div>
         </div>
