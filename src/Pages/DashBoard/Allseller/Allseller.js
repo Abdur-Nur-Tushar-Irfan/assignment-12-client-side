@@ -5,7 +5,7 @@ import { AuthContext } from '../../Context/UserContext';
 
 const Allseller = () => {
     const {user}=useContext(AuthContext)
-    const url=`http://localhost:5000/seller?role=seller`
+    const url=`https://assignment-12-server-psi.vercel.app/seller?role=seller`
     const {data:users=[],refetch}=useQuery({
        queryKey:['users',user?.email],
        queryFn:async()=>{
@@ -17,7 +17,7 @@ const Allseller = () => {
     const handleSellerDelete = (id) => {
         const agree = window.confirm('are your sure you delete your seller')
         if (agree) {
-            fetch(`http://localhost:5000/seller/${id}`, {
+            fetch(`https://assignment-12-server-psi.vercel.app/seller/${id}`, {
                 method: 'DELETE',
                
             })

@@ -27,7 +27,7 @@ const BookNow = ({selectCategory,setSelectCategory}) => {
             picture
         }
         console.log(bookings)
-        fetch('http://localhost:5000/bookings',{
+        fetch('https://assignment-12-server-psi.vercel.app/bookings',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

@@ -9,7 +9,7 @@ const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [role, setRole] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/users?email=${user?.email}`)
+        fetch(`https://assignment-12-server-psi.vercel.app/users?email=${user?.email}`)
             .then((res) => res.json())
             .then((data) => setRole(data));
     }, [user?.email]);

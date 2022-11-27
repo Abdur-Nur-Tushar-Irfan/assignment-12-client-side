@@ -6,7 +6,7 @@ const Order = () => {
     const { user } = useContext(AuthContext)
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings'],
-        queryFn: () => fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+        queryFn: () => fetch(`https://assignment-12-server-psi.vercel.app/bookings?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }

@@ -33,7 +33,7 @@ const AddProduct = () => {
                         year: data.year,
                         image: imgData.data.url
                     }
-                    fetch('http://localhost:5000/products',{
+                    fetch('https://assignment-12-server-psi.vercel.app/products',{
                         method:'POST',
                         headers:{
                             'content-type':'application/json',
@@ -91,7 +91,7 @@ const AddProduct = () => {
                     {errors.img?.type === 'required' && <p className='text-red-600 mt-2'>Photo is required</p>}
                 </div>
                 <div className="form-control mt-6">
-                    <input className='btn btn-accent w-full' value='Register' type="submit" />
+                    <input className='btn btn-accent w-full' value='ADD PRODUCT' type="submit" />
                 </div>
             </div>
         </form>

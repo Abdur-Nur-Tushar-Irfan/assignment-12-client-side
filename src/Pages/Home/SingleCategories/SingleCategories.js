@@ -10,7 +10,7 @@ const SingleCategories = () => {
     console.log(id)
     const { data: allCategories = [] } = useQuery({
         queryKey: ['allCategories'],
-        queryFn: () => fetch(`http://localhost:5000/allCategories/${id}`)
+        queryFn: () => fetch(`https://assignment-12-server-psi.vercel.app/allCategories/${id}`)
             .then(res => res.json())
     })
     return (

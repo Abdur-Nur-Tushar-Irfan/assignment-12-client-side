@@ -15,7 +15,6 @@ import Home from "../Pages/Home/Home/Home";
 import SingleCategories from "../Pages/Home/SingleCategories/SingleCategories";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import WishList from "../Pages/WishList/WishList";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes=createBrowserRouter([
@@ -47,7 +46,7 @@ export const routes=createBrowserRouter([
             {
                 path:'/singlecategory/:id',
                 element:<PrivateRoute><SingleCategories></SingleCategories></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/allCategories/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-12-server-psi.vercel.app/allCategories/${params.id}`)
             },
             {
                 path:'/blog',

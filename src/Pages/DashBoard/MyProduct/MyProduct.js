@@ -7,7 +7,7 @@ const MyProduct = () => {
     const { user } = useContext(AuthContext)
     const { data: products = [] } = useQuery({
         queryKey: ['products'],
-        queryFn: () => fetch(`http://localhost:5000/products?email=${user?.email}`,{
+        queryFn: () => fetch(`https://assignment-12-server-psi.vercel.app/products?email=${user?.email}`,{
             headers:{
                 authorization:`bearer ${localStorage.getItem('accessToken')}`
             }
@@ -18,7 +18,7 @@ const MyProduct = () => {
     const handleproductsDelete = (id) => {
         const agree = window.confirm('are your sure you delete your product')
         if (agree) {
-            fetch(`http://localhost:5000/products/${id}`, {
+            fetch(`https://assignment-12-server-psi.vercel.app/products/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -35,12 +35,12 @@ const MyProduct = () => {
         const saveAdvertiseItems={
             image:product.image,
             category:product.category,
-            description:product.description,
+            Description:product.description,
             Price:product.price,
             Year:product.year
         }
         
-        fetch(`http://localhost:5000/advertices`,{
+        fetch(`https://assignment-12-server-psi.vercel.app/advertices`,{
             method:'POST',
             headers:{
                 'content-type': 'application/json'
@@ -51,6 +51,7 @@ const MyProduct = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
+            toast.success('Advertice this item')
         })
         .catch(err=>console.err(err))
     }
